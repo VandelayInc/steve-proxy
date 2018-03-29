@@ -1,8 +1,11 @@
+// const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
 
-app.use(morgan('dev'));
+// const morgan = require('morgan');
+// app.use(morgan('dev'));
+
+// app.locals.newrelic = newrelic;
 
 app.use('/rooms/:roomid', express.static(`${__dirname}/public/`));
 
@@ -41,10 +44,10 @@ app.get('/rooms/:roomid/ratings', (req,res) => {
 
 // Neighborhood Redirection
 app.get('/rooms/:roomid/neighborhood', (req, res) => {
-  res.redirect(`http://18.188.46.228/rooms/${req.params.roomid}/neighborhood`);
+  res.redirect(`http://localhost:3006/rooms/${req.params.roomid}/neighborhood`);
 });
 app.get('/api/neighborhood/:roomid', (req, res) => {
-  res.redirect(`http://18.188.46.228/api/neighborhood/${req.params.roomid}`);
+  res.redirect(`http://localhost:3006/api/neighborhood/${req.params.roomid}`);
 });
 
 // Similar Listing Redirection
